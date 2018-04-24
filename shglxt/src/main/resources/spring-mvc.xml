@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <mvc:annotation-driven />
+    <mvc:default-servlet-handler />
+<!--    <context:component-scan base-package="com.jone.ssm.controller" />   -->
+    <context:component-scan base-package="com.jone.ssm.controller" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+    <!-- 此处配置用来声明当前项目中的静态资源，可以包括图片，css文件，js文件或引入的其他资源，
+        例如jquery，被映射的静态资源可以直接通过spring-mvc进行访问。
+        或者，将web.xml中DispatcherServlet的url-pattern映射设置为*.do，这样也能实现静态资源的访问。
+        推荐使用下面的方法
+        
+    <mvc:resources location="/resources/" mapping="/resources/**"/>
+-->  
+</beans>
