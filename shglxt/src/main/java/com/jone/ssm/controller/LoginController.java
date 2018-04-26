@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,17 +24,15 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value ="/login",method = RequestMethod.POST)
-	public ModelAndView  login(String name,String password,HttpServletRequest request){
+	public String  login(String name,String password,HttpServletRequest request,Model model){
 		boolean isExist = userService.existUser(name, password);
-		ModelAndView mav = new ModelAndView(); 
+		
 		if(isExist){
 			request.getSession().setAttribute("name", name);
-			mav.setViewName("index/index");
-			return mav;
+			return "index/index";
 		}else{
-			request.getSession().setAttribute("status", "登录失败");
-			mav.setViewName("redirect:/login");
-			return mav;
+			model.addAttribute("message","登录失败");
+			return "index/login";
 		}
 	}
 	

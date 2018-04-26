@@ -35,7 +35,7 @@
 						<input type="submit" class="register" value="登录" style="margin-right:10px"/>
 						<a href="register" style="float:right;margin:8px">没有账户? 点击注册</a>
 					</div>
-					<p>${status}</p>
+					<p>${message}</p>
 				</form>
         	</div>
         
