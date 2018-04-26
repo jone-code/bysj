@@ -18,7 +18,7 @@
     </context:component-scan>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="prefix" value="/" />
         <property name="suffix" value=".jsp" />
     </bean>
     <!-- 此处配置用来声明当前项目中的静态资源，可以包括图片，css文件，js文件或引入的其他资源，
