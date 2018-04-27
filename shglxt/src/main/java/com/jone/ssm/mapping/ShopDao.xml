@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jone.ssm.dao.ShopDao">
+	<resultMap id="BaseResultMap" type="com.jone.ssm.pojo.User">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="shopNum" property="shopNum" jdbcType="VARCHAR" />
+		<result column="price" property="price" jdbcType="DOUBLE" />
+		<result column="count" property="count" jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="shopclassId" property="shopclassId" jdbcType="INTEGER" />
+	</resultMap>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select * from t_shop  
+	</select>
+</mapper>
