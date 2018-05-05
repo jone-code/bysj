@@ -6,17 +6,17 @@
 </head>
 <body>
 
-	<form action="admin!categoryUpdate.action" method="post" >
+	<form action="categoryUpdate" method="post" >
 	
-		<input type="hidden" name="page" value="${param.page}"/>
+		<%-- <input type="hidden" name="page" value="${param.page}"/> --%>
 
-		<input type="hidden" name="category.id" value="${category.id}"/>
+		<input type="hidden" name="id" value="${category.id}"/>
 		
-		名称：<input type="text" name="category.name" value="${category.name}"/>
+		名称：<input type="text" name="name" value="${category.name}"/>
 		
-		<input type="submit" value="修改"/><s:actionerror/>
+		<input type="submit" value="修改"/>
 		
 	</form>
-	
+	<p style="color:red">${message }</p>
 </body>
 </html>

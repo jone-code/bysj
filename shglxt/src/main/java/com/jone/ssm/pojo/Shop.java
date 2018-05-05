@@ -8,6 +8,38 @@ public class Shop {
 	private int count;
 	private int type;
 	private int shopclassId;
+	private String image;
+	
+	
+	public Shop(String shopNum, String name, double price, int count,
+			int shopclassId) {
+		super();
+		this.shopNum = shopNum;
+		this.name = name;
+		this.price = price;
+		this.count = count;
+		this.shopclassId = shopclassId;
+	}
+	public Shop() {
+		super();
+	}
+	
+	public Shop(int id, String shopNum, String name, double price, int count,
+			int shopclassId) {
+		super();
+		this.id = id;
+		this.shopNum = shopNum;
+		this.name = name;
+		this.price = price;
+		this.count = count;
+		this.shopclassId = shopclassId;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public int getId() {
 		return id;
 	}

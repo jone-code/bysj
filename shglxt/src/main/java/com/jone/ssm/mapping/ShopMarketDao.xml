@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jone.ssm.dao.ShopMarketDao">
+
+	<resultMap id="BaseResultMap" type="com.jone.ssm.pojo.ShopMarket">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="info" property="info" jdbcType="VARCHAR" />
+		<result column="image" property="image" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="BaseResultMap">
+		select * from t_shopmarket
+	</select>
+
+
+
+	<delete id="delete">
+		delete from t_shopmarket
+		where id =
+		#{id,jdbcType=INTEGER}
+	</delete>
+
+	<update id="update" parameterType="com.jone.ssm.pojo.ShopMarket">
+		update t_shopmarket
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="info != null">
+				info = #{info,jdbcType=VARCHAR},
+			</if>
+			<if test="image != null">
+				image = #{image,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<insert id="add" parameterType="com.jone.ssm.pojo.ShopMarket">
+		insert into t_shopmarket
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="market.name != null">
+				name,
+			</if>
+			<if test="market.address != null">
+				address,
+			</if>
+			<if test="market.info != null">
+				info,
+			</if>
+			<if test="market.image != null">
+				image,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="market.name != null">
+				#{market.name,jdbcType=VARCHAR},
+			</if>
+			<if test="market.address != null">
+				#{market.address,jdbcType=VARCHAR},
+			</if>
+			<if test="market.info != null">
+				#{market.info,jdbcType=VARCHAR},
+			</if>
+			<if test="market.image != null">
+				#{market.image,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+</mapper>

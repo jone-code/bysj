@@ -6,13 +6,14 @@
 </head>
 <body>
 
-	<form action="../admin!categoryAdd.action" method="post" >
+	<form action="categoryAdd" method="post" >
 
-		名称：<input type="text" name="category.name"/>
+		名称：<input type="text" name="name"/>
 		
 		<input type="submit" value="添加"/>
 		
-	</form><s:actionerror/>
-	
+	</form>
+	<p style="color:green">${successMessage }</p>
+	<p style="color:red">${message }</p>
 </body>
 </html>

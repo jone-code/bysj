@@ -15,7 +15,7 @@
 
 	<div class="left_content">
 	
-		<div class="title"><span class="title_icon"><img src="index/images/bullet1.gif"/></span>用户登录</div>
+		<div class="title"><span class="title_icon"><img src="../index/images/bullet1.gif"/></span>用户登录</div>
 
 		<div class="feat_prod_box_details">
 		
@@ -35,7 +35,7 @@
 						<input type="submit" class="register" value="登录" style="margin-right:10px"/>
 						<a href="register" style="float:right;margin:8px">没有账户? 点击注册</a>
 					</div>
-					<p>${message}</p>
+					<p style="color:red">${message}</p>
 				</form>
         	</div>
         
@@ -45,7 +45,6 @@
 	
 	</div>
    
-   	<s:action name="/book/index!right" executeResult="true"/>
    
 	<div class="clear"></div>
 	

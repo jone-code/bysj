@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jone.ssm.dao.ShopDao">
-	<resultMap id="BaseResultMap" type="com.jone.ssm.pojo.User">
+	<resultMap id="BaseResultMap" type="com.jone.ssm.pojo.Shop">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
 		<result column="shopNum" property="shopNum" jdbcType="VARCHAR" />
@@ -9,8 +9,61 @@
 		<result column="count" property="count" jdbcType="INTEGER" />
 		<result column="type" property="type" jdbcType="INTEGER" />
 		<result column="shopclassId" property="shopclassId" jdbcType="INTEGER" />
+		<result column="image" property="image" jdbcType="VARCHAR" />
 	</resultMap>
 	<select id="selectAll" resultMap="BaseResultMap">
-		select * from t_shop  
+		select * from t_goods
 	</select>
+
+	<select id="selectAllAndShopClass" resultType="com.jone.ssm.pojo.ShopDto">
+		select
+		t_goods.id,t_goods.shopnum,t_goods.name,t_goods.price,t_goods.count,t_category.name
+		as classname,t_goods.image from t_goods left join t_category on
+		t_goods.shopclassid = t_category.id
+	</select>
+	
+	<delete id="deleteById">
+		delete from t_goods
+		where id =
+		#{id,jdbcType=INTEGER}
+	</delete>
+	
+	<select id="selectById" resultMap="BaseResultMap">
+		select * from t_goods where id=#{id,jdbcType=INTEGER}
+	</select>
+	
+	<update id="updateShop" parameterType="com.jone.ssm.pojo.Shop">
+		update t_goods 
+		<set>
+			<if test="shop.name != null">
+				name = #{shop.name,jdbcType=VARCHAR},
+			</if>
+			<if test="shop.shopNum != null">
+				shopNum = #{shop.shopNum,jdbcType=VARCHAR},
+			</if>
+			<if test="shop.price != null">
+				price = #{shop.price,jdbcType=DOUBLE},
+			</if>
+			<if test="shop.count != null">
+				count = #{shop.count,jdbcType=INTEGER},
+			</if>
+			<if test="shop.shopclassId != null">
+				shopclassid = #{shop.shopclassId,jdbcType=INTEGER},
+			</if>
+			<if test="shop.image != null">
+				image = #{shop.image,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id=#{shop.id,jdbcType=INTEGER}
+	</update>
+	<insert id="insertShop" parameterType="com.jone.ssm.pojo.Shop">
+		insert into t_goods (shopnum,name,price,count,shopclassid,image) 
+		values(#{shop.shopNum,jdbcType=VARCHAR},
+		#{shop.name,jdbcType=VARCHAR},
+		#{shop.price,jdbcType=DOUBLE},
+		#{shop.count,jdbcType=INTEGER},
+		#{shop.shopclassId,jdbcType=INTEGER},
+		#{shop.image,jdbcType=VARCHAR}
+		)
+	</insert>
 </mapper>

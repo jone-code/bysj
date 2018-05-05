@@ -6,17 +6,17 @@
 </head>
 <body>
 
-	<form action="admin!userUpdate.action" method="post" >
+	<form action="userUpdatePhone" method="post" >
 	
-		<input type="hidden" name="page" value="${param.page}"/>
+		<%-- <input type="hidden" name="page" value="${param.page}"/>
 
 		<input type="hidden" name="user.id" value="${user.id}"/>
 		<input type="hidden" name="user.username" value="${user.username}"/>
-		<input type="hidden" name="user.password" value="${user.password}"/>
-		
-		用户：${user.username}<br>
-		电话：<input type="text" name="user.phone" value="${user.phone}"/>
-		<input type="submit" value="修改"/><s:actionerror/>
+		<input type="hidden" name="user.password" value="${user.password}"/> --%>
+		<input type="hidden" name="id" value="${user.id}"/>
+		用户：${user.name}<br>
+		电话：<input type="text" name="phone" value="${user.phone}"/>
+		<input type="submit" value="修改"/>
 		
 	</form>
 	

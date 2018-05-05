@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -75,23 +76,22 @@ a:active {
 						<div align="center" class="STYLE2">操作</div></td>
 				</tr>
 				
-				<!-- 用struts的iterator标签遍历news集合, 并去处每一个name显示 -->
-				<s:iterator value="categoryList">
+				<c:forEach items="${categoryList}" var="category">
 	
 					<tr>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><s:property value="id"/></div></td>
+							<div align="center" class="STYLE2 STYLE1">${category.id}</div></td>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><s:property value="name"/></div></td>
+							<div align="center" class="STYLE2 STYLE1">${category.name}</div></td>
 						<td height="20" bgcolor="#FFFFFF">
 							<div align="center">
-								<img src="images/037.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!categoryUp.action?id=<s:property value="id"/>&page=${page}">修改</a><span class="STYLE1">]</span>
-								<img src="images/083.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!categoryDelete.action?category.id=<s:property value="id"/>&page=${page}">删除</a><span class="STYLE1">]</span>
+								<img src="images/037.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="toUpdateCategory?id=${category.id}">修改</a><span class="STYLE1">]</span>
+								<img src="images/083.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="deleteCategory?id=${category.id}">删除</a><span class="STYLE1">]</span>
 							</div>
 						</td>
 					</tr>
 					
-				</s:iterator>
+				</c:forEach>
 				
 			</table>
 		  </td>

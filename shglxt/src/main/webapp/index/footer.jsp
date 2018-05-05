@@ -9,7 +9,7 @@
 
 <div class="footer">
 	<div class="left_footer">
-		<img src="index/images/footer_logo.gif"/>
+		<img src="../index/images/footer_logo.gif"/>
 	</div>
 </div>
 

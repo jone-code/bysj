@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -53,7 +54,7 @@ a:active {
 		<tr>
 		  <td width="15" height="30"><img src="images/tab_03.gif" width="15" height="30" /></td>
 		  <td background="images/tab_05.gif"><img src="images/311.gif" width="16" height="16" /> 
-			<span class="STYLE4">图书列表</span></td>
+			<span class="STYLE4">订单</span></td>
 		  <td width="14"><img src="images/tab_07.gif" width="14" height="30" /></td>
 		</tr>
 	  </table>
@@ -70,59 +71,66 @@ a:active {
 					<td width="5%" height="26" background="images/tab_14.gif" class="STYLE1">
 						<div align="center" class="STYLE2 STYLE1">编号</div></td>
 					<td width="10%" height="26" background="images/tab_14.gif" class="STYLE1">
-						<div align="center" class="STYLE2 STYLE1">封面</div></td>
+						<div align="center" class="STYLE2 STYLE1">商品名</div></td>
 					<td width="10%" height="26" background="images/tab_14.gif" class="STYLE1">
-						<div align="center" class="STYLE2 STYLE1">书名</div></td>
+						<div align="center" class="STYLE2 STYLE1">数量</div></td>
 					<td width="5%" height="26" background="images/tab_14.gif" class="STYLE1">
 						<div align="center" class="STYLE2 STYLE1">价格</div></td>
 					<td width="20%" height="26" background="images/tab_14.gif" class="STYLE1">
-						<div align="center" class="STYLE2 STYLE1">介绍</div></td>
+						<div align="center" class="STYLE2 STYLE1">下单时间</div></td>
 					<td width="10%" height="26" background="images/tab_14.gif" class="STYLE1">
-						<div align="center" class="STYLE2 STYLE1">作者</div></td>
+						<div align="center" class="STYLE2 STYLE1">地址</div></td>
 					<td width="10%" height="26" background="images/tab_14.gif" class="STYLE1">
+						<div align="center" class="STYLE2 STYLE1">顾客</div></td>
+					<td width="10%" height="26" background="images/tab_14.gif" class="STYLE1">
+						<div align="center" class="STYLE2 STYLE1">其他信息</div></td>
+					<!-- <td width="10%" height="26" background="images/tab_14.gif" class="STYLE1">
 						<div align="center" class="STYLE2 STYLE1">出版社</div></td>
 					<td width="10%" height="26" background="images/tab_14.gif" class="STYLE1">
-						<div align="center" class="STYLE2 STYLE1">出版日期</div></td>
+						<div align="center" class="STYLE2 STYLE1">出版日期</div></td> -->
 					<td width="20%" height="26" background="images/tab_14.gif" class="STYLE1">
 						<div align="center" class="STYLE2">操作</div></td>
 				</tr>
 				
 				<!-- 用struts的iterator标签遍历news集合, 并去处每一个name显示 -->
-				<s:iterator value="bookList">
+				<c:forEach items="${orderList }" var="order">
 	
 					<tr>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><s:property value="id"/></div></td>
+							<div align="center" class="STYLE2 STYLE1">${order.number}</div></td>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><a href="../book/detail.action?bookid=<s:property value="id"/>" target="_blank"><img src="../<s:property value="cover"/>" width="150px" height="150px"></a></div></td>
+							<div align="center" class="STYLE2 STYLE1">${order.shopname}</div></td>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><a href="../book/detail.action?bookid=<s:property value="id"/>" target="_blank"><s:property value="name"/></a></div></td>
+							<div align="center" class="STYLE2 STYLE1">${order.shopCount}</div></td>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><s:property value="price"/></div></td>
+							<div align="center" class="STYLE2 STYLE1">${order.price}</div></td>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><s:property value="intro"/></div></td>
+							<div align="center" class="STYLE2 STYLE1">${order.time}</div></td>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><s:property value="auther"/></div></td>
+							<div align="center" class="STYLE2 STYLE1">${order.address}</div></td>
 						<td height="20" bgcolor="#FFFFFF">
+							<div align="center" class="STYLE2 STYLE1">${order.username}</div></td>
+						<td height="20" bgcolor="#FFFFFF">
+							<div align="center" class="STYLE2 STYLE1">${order.info}</div></td>
+						<!-- <td height="20" bgcolor="#FFFFFF">
 							<div align="center" class="STYLE2 STYLE1"><s:property value="press"/></div></td>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><s:property value="pubdate"/></div></td>
+							<div align="center" class="STYLE2 STYLE1"><s:property value="pubdate"/></div></td> -->
 						<td height="20" bgcolor="#FFFFFF">
 							<div align="center">
-								<s:if test="!special"><img src="images/001.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!bookSet.action?id=<s:property value="id"/>&flag=11&status=${status}&page=${page}">设为推荐</a><span class="STYLE1">]</span></s:if>
+								<%-- <s:if test="!special"><img src="images/001.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!bookSet.action?id=<s:property value="id"/>&flag=11&status=${status}&page=${page}">设为推荐</a><span class="STYLE1">]</span></s:if>
 								<s:if test="special"><img src="images/010.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!bookSet.action?id=<s:property value="id"/>&flag=10&status=${status}&page=${page}">取消推荐</a><span class="STYLE1">]</span></s:if>
 								<s:if test="!news"><img src="images/001.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!bookSet.action?id=<s:property value="id"/>&flag=21&status=${status}&page=${page}">设为最新</a><span class="STYLE1">]</span></s:if>
 								<s:if test="news"><img src="images/010.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!bookSet.action?id=<s:property value="id"/>&flag=20&status=${status}&page=${page}">取消最新</a><span class="STYLE1">]</span></s:if>
 								<s:if test="!sale"><img src="images/001.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!bookSet.action?id=<s:property value="id"/>&flag=31&status=${status}&page=${page}">设为促销</a><span class="STYLE1">]</span></s:if>
-								<s:if test="sale"><img src="images/010.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!bookSet.action?id=<s:property value="id"/>&flag=30&status=${status}&page=${page}">取消促销</a><span class="STYLE1">]</span></s:if>
-								<br>
-								<img src="images/037.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!bookUp.action?id=<s:property value="id"/>&page=${page}">修改</a><span class="STYLE1">]</span>
-								<img src="images/083.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!bookDelete.action?book.id=<s:property value="id"/>&page=${page}">删除</a><span class="STYLE1">]</span>
+								<s:if test="sale"><img src="images/010.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!bookSet.action?id=<s:property value="id"/>&flag=30&status=${status}&page=${page}">取消促销</a><span class="STYLE1">]</span></s:if> --%>
+								<img src="images/037.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="toUpdateOrder?id=${order.id}">修改</a><span class="STYLE1">]</span>
+								<%-- <img src="images/083.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="deleteShop?id=${shop.id}">删除</a><span class="STYLE1">]</span> --%>
 							</div>
 						</td>
 					</tr>
 					
-				</s:iterator>
+				</c:forEach>
 				
 			</table>
 		  </td>
@@ -143,6 +151,17 @@ a:active {
 	</td>
   </tr>
 </table>
-
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+	  $(".xstp").on({  
+          mouseover : function(){  
+        	  $(this).children("div").first().show(); 
+          } ,  
+          mouseout : function(){  
+        	  $(this).children("div").first().hide();
+          }   
+      }) ; 
+	
+</script>
 </body>
 </html>

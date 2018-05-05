@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>书店后台管理</title>
+<title>售后管理</title>
 </head>
 <frameset rows="52,*,23" frameborder="no" border="0" framespacing="0">
   <frame src="top.jsp" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" />

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -79,28 +80,27 @@ a:active {
 						<div align="center" class="STYLE2">操作</div></td>
 				</tr>
 				
-				<!-- 用struts的iterator标签遍历news集合, 并去处每一个name显示 -->
-				<s:iterator value="userList">
+				<c:forEach items="${userList }" var="user">
 	
 					<tr>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><s:property value="id"/></div></td>
+							<div align="center" class="STYLE2 STYLE1">${user.id }</div></td>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><s:property value="username"/></div></td>
+							<div align="center" class="STYLE2 STYLE1">${user.name }</div></td>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><s:property value="password"/></div></td>
+							<div align="center" class="STYLE2 STYLE1">${user.password }</div></td>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><s:property value="phone"/></div></td>
+							<div align="center" class="STYLE2 STYLE1">${user.phone }</div></td>
 						<td height="20" bgcolor="#FFFFFF">
 							<div align="center">
-								<img src="images/037.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!userRe.action?id=<s:property value="id"/>&page=${page}">重置密码</a><span class="STYLE1">]</span>
-								<img src="images/037.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!userUp.action?id=<s:property value="id"/>&page=${page}">修改</a><span class="STYLE1">]</span>
-								<img src="images/083.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!userDelete.action?id=<s:property value="id"/>&page=${page}">删除</a><span class="STYLE1">]</span>
+								<img src="images/037.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="resetUser?id=${user.id }">重置密码</a><span class="STYLE1">]</span>
+								<img src="images/037.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="updateUser?id=${user.id }">修改</a><span class="STYLE1">]</span>
+								<img src="images/083.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="deleteUser?id=${user.id }">删除</a><span class="STYLE1">]</span>
 							</div>
 						</td>
 					</tr>
 					
-				</s:iterator>
+				</c:forEach>
 				
 			</table>
 		  </td>

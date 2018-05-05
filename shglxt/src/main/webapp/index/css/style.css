@@ -1,6 +1,6 @@
 body
 {
-background-color:#6F605A;
+background-color:#66cccc;
 font-family:Arial, Helvetica, sans-serif;
 padding:0;
 font-size:13px;
@@ -43,7 +43,7 @@ background-color:#FFFFFF;
 .header{
 width:900px;
 height:181px;
-background:url(../images/header.jpg) no-repeat center;
+background:url(../images/logo2.jpg) no-repeat center;
 }
 .logo{
 padding:50px 0 0 130px;
@@ -52,7 +52,9 @@ padding:50px 0 0 130px;
 #menu{
 width:900px;
 height:30px;
-padding:55px 0 0 10px;
+top:151px;
+position: relative;
+/* padding:55px 0 0 10px; */
 }
 #menu ul{
 display:block;
@@ -75,7 +77,7 @@ _margin:0 2px 0 2px;
 float:left;
 text-decoration:none;
 text-align:center;
-color:#fff;
+color:#000;
 font-size:13px;
 /* line-height:25px; */
 }
@@ -92,7 +94,7 @@ font-size:13px;
 /* line-height:25px; */
 }
 #menu ul li a:hover{
-color:#f7a849;
+color:#FFF;
 }
 /*----------------crumb_nav------------------*/
 .crumb_nav{

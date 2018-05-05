@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jone.ssm.dao.OrderDao">
+	<resultMap id="BaseResultMap" type="com.jone.ssm.pojo.Order">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="number" property="number" jdbcType="VARCHAR" />
+		<result column="shopcount" property="shopCount" jdbcType="INTEGER" />
+		<result column="price" property="price" jdbcType="DOUBLE" />
+		<result column="time" property="time" jdbcType="DATE" />
+		<result column="shopid" property="shopId" jdbcType="INTEGER" />
+		<result column="userid" property="userId" jdbcType="INTEGER" />
+		<result column="info" property="info" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="selectAll" resultType="com.jone.ssm.pojo.OrderDto">
+		select
+		a.id,a.number,a.shopcount,a.price,a.time,a.address,a.shopid,
+		b.name as shopname,a.userid,c.name as username,a.info from t_order as a LEFT
+		JOIN t_goods as b on a.shopid=b.id
+		LEFT JOIN t_user c on a.userid=c.id
+	</select>
+
+
+	<delete id="deleteById">
+		delete from t_order
+		where id =
+		#{id,jdbcType=INTEGER}
+	</delete>
+
+	<select id="selectById" resultMap="BaseResultMap"> select * from t_order 
+		where id=#{id,jdbcType=INTEGER} </select>
+
+	<update id="update" parameterType="com.jone.ssm.pojo.Order">
+		update t_order set shopcount = #{order.shopCount,jdbcType=INTEGER},
+		price = #{order.price,jdbcType=DOUBLE},address = #{order.address,jdbcType=VARCHAR},
+		info = #{order.info,jdbcType=VARCHAR}
+		where id=#{order.id,jdbcType=INTEGER}
+	</update>
+	<insert id="add" parameterType="com.jone.ssm.pojo.Order">
+		insert into t_order
+		(number,shopcount,price,time,address,shopid,userid,info)
+		values(#{order.number,jdbcType=VARCHAR},
+		#{order.shopCount,jdbcType=INTEGER},
+		#{order.price,jdbcType=DOUBLE},
+		#{order.time,jdbcType=DATE},
+		#{order.address,jdbcType=VARCHAR},
+		#{order.shopId,jdbcType=INTEGER},
+		#{order.userId,jdbcType=INTEGER},
+		#{order.info,jdbcType=VARCHAR}
+		)
+	</insert>
+</mapper>

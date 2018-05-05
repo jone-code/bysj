@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -53,7 +54,7 @@ a:active {
 		<tr>
 		  <td width="15" height="30"><img src="images/tab_03.gif" width="15" height="30" /></td>
 		  <td background="images/tab_05.gif"><img src="images/311.gif" width="16" height="16" /> 
-			<span class="STYLE4">用户列表</span></td>
+			<span class="STYLE4">所有管理员</span></td>
 		  <td width="14"><img src="images/tab_07.gif" width="14" height="30" /></td>
 		</tr>
 	  </table>
@@ -78,29 +79,24 @@ a:active {
 				</tr>
 				
 				<!-- 用struts的iterator标签遍历news集合, 并去处每一个name显示 -->
-				<s:iterator value="adminList">
-	
+				<!-- <s:iterator value="adminList"> -->
+				<c:forEach items="${adminList }" var="admin">
 					<tr>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><s:property value="id"/></div></td>
+							<div align="center" class="STYLE2 STYLE1">${admin.id }</div></td>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><s:property value="username"/></div></td>
+							<div align="center" class="STYLE2 STYLE1">${admin.name }</div></td>
 						<td height="20" bgcolor="#FFFFFF">
-							<div align="center" class="STYLE2 STYLE1"><s:property value="password"/></div></td>
+							<div align="center" class="STYLE2 STYLE1">${admin.password }</div></td>
 						<td height="20" bgcolor="#FFFFFF">
-							<s:if test="id==1">
-								<span class="STYLE1">系统保护用户</span>
-							</s:if>
-							<s:else>
 								<div align="center">
-									<img src="images/037.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!adminRe.action?id=<s:property value="id"/>&page=${page}">重置密码</a><span class="STYLE1">]</span>
-									<img src="images/083.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="admin!adminDelete.action?admin.id=<s:property value="id"/>&page=${page}">删除</a><span class="STYLE1">]</span>
+									<img src="images/037.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="toUpdatePwd?name=${admin.name }">重置密码</a><span class="STYLE1">]</span>
+									<img src="images/083.gif" width="9" height="9" /><span class="STYLE1">[</span><a href="adminDelete?id=${admin.id }">删除</a><span class="STYLE1">]</span>
 								</div>
-							</s:else>
 						</td>
 					</tr>
-					
-				</s:iterator>
+				</c:forEach>	
+				<!-- </s:iterator> -->
 				
 			</table>
 		  </td>
@@ -115,7 +111,7 @@ a:active {
 		  <tr>
 			<td width="15" height="29"><img src="images/tab_20.gif" width="15" height="29" /></td>
 			<td background="images/tab_21.gif">
-				<a href="pages/admin-add.jsp">添加用户</a>${pageTool}
+				<a href="pages/admin-add.jsp">添加管理员</a>
 			</td>
 			<td width="14"><img src="images/tab_22.gif" width="14" height="29" /></td>
 		  </tr>

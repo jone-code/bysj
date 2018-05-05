@@ -5,6 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-欢迎登录书店后台管理
+欢迎登录电器售后管理系统
 </body>
 </html>

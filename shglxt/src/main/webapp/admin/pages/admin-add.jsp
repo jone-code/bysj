@@ -6,14 +6,15 @@
 </head>
 <body>
 
-	<form action="<%=request.getContextPath()%>/admin/admin!adminAdd.action" method="post" >
+	<form action="<%=request.getContextPath()%>/admin/adminAdd" method="post" >
 
-		用户：<input type="text" name="admin.username"/><br>
-		密码：<input type="text" name="admin.password"/>
+		用户：<input type="text" name="name"/><br>
+		密码：<input type="text" name="password"/>
 		
 		<input type="submit" value="添加"/>
 		
-	</form><s:actionerror/>
-	
+	</form>
+	<p style="color:red">${errorMessage }</p>
+	<p style="color:green">${successMessage }</p>
 </body>
 </html>

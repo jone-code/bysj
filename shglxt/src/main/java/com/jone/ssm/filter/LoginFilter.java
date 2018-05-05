@@ -31,7 +31,7 @@ public class LoginFilter implements Filter {
 		HttpSession session = requsest.getSession();
 		String name = (String) session.getAttribute("name");
 		String currentURL = requsest.getRequestURI();
-		if(!currentURL.contains("login")){
+		if(!currentURL.contains("login")||currentURL.contains(".css") || currentURL.contains(".js")){
 			if (StringUtils.isEmpty(name)) {
 				requsest.getRequestDispatcher("loginPage").forward(requsest, resp);
 			} else {

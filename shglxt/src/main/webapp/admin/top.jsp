@@ -27,23 +27,25 @@ a:hover {font-size:12px; color:#00CCFF;text-decoration:none;}
 </style></head>
 
 <body>
+<input type="hidden" id="adminId" value="${adminId }">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td height="36" background="images/main_07.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
              <td width="282" height="52" background="images/main_05.gif">
         	<span style="font-size:24px;font-weight:bolder;margin-left:60px;">
-        		书店后台管理</span>
+        		售后管理</span>
         </td>
         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td>
-	            <span class="STYLE1">
+	           <!--  <span class="STYLE1">
 	            <img src="images/home.gif" width="12" height="13"> 
 	            </span>
 	            <span class="STYLE4">
-	            <a href="../index/index.action"  target="_blank">网站首页</a>
-	            </span>
+	            <a href="index"  target="_blank">网站首页</a>
+	            </span> -->
+	           
 	            <span class="STYLE1"> </span>
             </td>
           </tr>
@@ -53,13 +55,19 @@ a:hover {font-size:12px; color:#00CCFF;text-decoration:none;}
           <tr>
             <td>
             	<img src="images/uesr.gif" width="14" height="14">
-            	<span class="STYLE2"> 当前登录用户：<s:property value="#session.admin"></s:property></span>
+            	<span class="STYLE2"> 当前登录用户：${adminName }</span>
+            	&nbsp;&nbsp;&nbsp;
+            	<span class="STYLE4">
+	             <a href="pages/admin-update.jsp"  target="rightFrame">&middot;修改密码</a>
+	              </span>
             	  <span class="STYLE1"> 
 	            <img src="images/quit.gif" width="16" height="13"> 
 	            </span>
+	            
 	            <span class="STYLE4">
-	            	<a href="login.jsp" target=_top>注销</a>
+	            	<a href="adminLogout" target=_top>注销</a>
 	            </span>
+	            
             </td>
           </tr>
         </table></td>

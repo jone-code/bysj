@@ -6,15 +6,15 @@
 </head>
 <body>
 
-	<form action="../admin!userAdd.action" method="post" >
+	<form action="userAdd" method="post" >
 
-		用户：<input type="text" name="user.username"/><br>
-		密码：<input type="text" name="user.password"/><br>
-		电话：<input type="text" name="user.phone"/>
-		
+		用户：<input type="text" name="name"/><br>
+		密码：<input type="password" name="password"/><br>
+		电话：<input type="text" name="phone"/>
 		<input type="submit" value="添加"/>
 		
-	</form><s:actionerror/>
-	
+	</form>
+	<p style="color:green">${successMessage }</p>
+	<p style="color:red">${message }</p>
 </body>
 </html>
